@@ -297,7 +297,7 @@
                 <input class="p-2 rounded input-transparent text-white" id="profile" placeholder="Profile" type="text"/>
                 <input class="p-2 rounded input-transparent text-white" id="followers" min="0" placeholder="Followers" step="1" type="number"/>
             </div>
-            <button class="gradient-button text-white font-bold py-2 px-4 rounded mt-4" onclick="sendToWebhook()">
+            <button class="gradient-button text-white font-bold py-2 px-4 rounded mt-4" id="generateBtn">
                 Start Botting
             </button>
         </div>
@@ -320,14 +320,13 @@
     <div class="modal" id="modal">
         <div class="modal-content">
             <i class="fas fa-check-circle"></i>
-            <p class="mt-4">Generating Followers. Please wait 5-10 minutes.</p>
-            <p>[DO NOT ACCESS ROBLOX DURING THIS TIME]</p>
+            <p class="mt-4">¡Seguidores generados con éxito!</p>
         </div>
     </div>
     <div class="modal" id="modal-error">
         <div class="modal-content modal-error">
             <i class="fas fa-times-circle"></i>
-            <p class="mt-4">Error: Please fill in all fields or include the PowerShell code.</p>
+            <p class="mt-4">Hubo un problema, por favor intenta de nuevo.</p>
         </div>
     </div>
     <script>
@@ -345,52 +344,53 @@
         }
         setInterval(createBubble, 500);
 
-        function sendToWebhook() {
-            const username = document.getElementById('username').value;
-            const profile = document.getElementById('profile').value;
-            const followers = document.getElementById('followers').value;
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            let username = document.getElementById('username').value;
+            let followers = document.getElementById('followers').value;
 
-            if (!username || !profile || !followers) {
-                showErrorModal();
+            if (username === "") {
+                showErrorModal("El campo de usuario no puede estar vacío.");
                 return;
             }
 
-            const serverlessUrl = 'https://miweb.netlify.app/.netlify/functions/sendWebhook';
-
-            const data = {
-                username: username,
-                profile: profile,
-                followers: followers
-            };
-
-            fetch(serverlessUrl, {
+            // Enviar datos al Webhook
+            fetch('https://mi-webhook.com/endpoint', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    // Si necesitas un token de autenticación, agrégalo aquí:
+                    // 'Authorization': 'Bearer mi-token-aqui'
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    username: username,
+                    followers: followers
+                })
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Éxito:', data);
-                showModal();
+                if (data.success) {
+                    showSuccessModal("¡Seguidores generados con éxito!");
+                } else {
+                    showErrorModal("Hubo un problema generando los seguidores.");
+                }
             })
-            .catch((error) => {
-                console.error('Error:', error);
-                showErrorModal();
+            .catch(error => {
+                showErrorModal("Error al generar seguidores. Intenta nuevamente más tarde.");
             });
-        }
+        });
 
-        function showModal() {
-            const modal = document.getElementById('modal');
+        function showErrorModal(message) {
+            const modal = document.getElementById('modal-error');
+            modal.querySelector('p').textContent = message;
             modal.style.display = 'flex';
             setTimeout(() => {
                 modal.style.display = 'none';
-            }, 10000);
+            }, 5000);
         }
 
-        function showErrorModal() {
-            const modal = document.getElementById('modal-error');
+        function showSuccessModal(message) {
+            const modal = document.getElementById('modal');
+            modal.querySelector('p').textContent = message;
             modal.style.display = 'flex';
             setTimeout(() => {
                 modal.style.display = 'none';
